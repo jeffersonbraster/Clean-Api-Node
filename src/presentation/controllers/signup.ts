@@ -1,5 +1,17 @@
 export class SignUpController {
   handle (httpRequest: any): any {
-    return {}
+    if (!httpRequest.body.name) {
+      return {
+        statusCode: 400,
+        body: new Error('Faltam dados: nome')
+      }
+    }
+
+    if (!httpRequest.body.email) {
+      return {
+        statusCode: 400,
+        body: new Error('Faltam dados: email')
+      }
+    }
   }
 }
